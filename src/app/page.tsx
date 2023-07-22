@@ -7,7 +7,7 @@ const page = () => {
     <Image
     objectFit="cover"
     layout="fill"
-    className='w-[100%] h-[100%] absoulte '
+    className='w-[100%] h-[100%] absoulte opacity-80'
     alt='momo 2d'
     src="/bg.png"
     />  
