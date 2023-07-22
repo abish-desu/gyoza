@@ -5,11 +5,11 @@ const page = () => {
 
     <div className='relative h-screen'>
     <Image
-    objectFit="cover"
+   
     layout="fill"
-    className='w-[100%] h-[100%] absoulte opacity-80'
-    alt='momo 2d'
-    src="/bg.png"
+    className='w-[100%] h-[100%] absoulte opacity-50 '
+    alt='momo'
+    src="/momo.jpeg"
     />  
 
     </div>
