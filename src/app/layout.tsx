@@ -1,8 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Image from "next/image";
-const inter = Inter({ subsets: ["latin"] });
+import Navbar from "../../components/Navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "Gyoza",
@@ -16,16 +15,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Image
           layout="fill"
-          className="absoulte opacity-50 "
+          className="absoulte opacity-70 -z-10"
           alt="momo"
           src="/momo.jpeg"
         />
-
+        <Navbar/>
         {children}
       </body>
     </html>
   );
 }
+

@@ -1,10 +1,10 @@
 import React from "react";
-import Image from "next/legacy/image";
+import Link from "next/link";
 const page = () => {
   return (
  <div>
-<h1>HOME</h1>
-  </div>
+home
+</div>
   );
 };
 

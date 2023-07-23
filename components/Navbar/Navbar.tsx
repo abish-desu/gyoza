@@ -1,9 +1,13 @@
 import React from 'react'
-
+import Logo from './Logo'
+import List from './List'
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div>
+      <Logo/>
+      <List/>
+    </div>
   )
 }
 
-export default Navbar
+export default Navbar;
