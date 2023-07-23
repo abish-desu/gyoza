@@ -3,7 +3,7 @@ import Logo from './Logo'
 import List from './List'
 const Navbar = () => {
   return (
-    <div>
+    <div className='flex justify-around w-full px-32 pt-20'>
       <Logo/>
       <List/>
     </div>

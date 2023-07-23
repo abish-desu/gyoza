@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <Image
           layout="fill"
-          className="absoulte opacity-70 -z-10"
+          className="absoulte opacity-30 -z-10"
           alt="momo"
           src="/momo.jpeg"
         />

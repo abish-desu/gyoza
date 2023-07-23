@@ -22,20 +22,20 @@ const List = () => {
   const pathname = usePathname();
 
   return (
-    <>
-      {navLinks.map((link) => {
+    <div className="flex justify-evenly w-80 text-l font-extralight">
+      {navLinks.map((link,index) => {
         const isActive = pathname.startsWith(link.href);
 
         return (
-          
           <Link
-            className={isActive ? "text-blue" : "text-white"}
+            className={isActive ? "text-gray-500" : "text-white"}
             href={link.href}
-            key={link.name}
+            key={index}
           >{link.name}</Link>
+          
         );
       })}
-    </>
+    </div>
   );
 };
 

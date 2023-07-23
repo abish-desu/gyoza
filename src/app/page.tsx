@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "next/link";
+import Hero from "../../components/Hero/Hero";
+
 const page = () => {
   return (
- <div>
-home
-</div>
+<Hero/>
   );
 };
 
