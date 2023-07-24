@@ -28,7 +28,7 @@ const List = () => {
 
         return (
           <Link
-            className={isActive ? "text-gray-500" : "text-white"}
+            className={isActive ? "text-gray-200" : "text-white"}
             href={link.href}
             key={index}
           >{link.name}</Link>
