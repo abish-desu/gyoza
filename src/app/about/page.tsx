@@ -5,7 +5,7 @@ const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
 const About = () => {
   return (
     <div className="grid grid-cols-3 gap-0 mx-52 mt-3">
-      <div className="col-span-1 ">
+      <div className="col-span-1 left">
         <div className='h-[326px] flex flex-col justify-center items-center'>
           <h1 className={`${vibes.className} text-2xl`}>RESERVATIONS</h1>
           <p className="text-center px-4 pt-5">
@@ -14,7 +14,7 @@ const About = () => {
         </div>
         <img src='/reserve.png' alt="Reservation 1" className="" />
       </div>
-      <div className="col-span-2 flex flex-col">
+      <div className="col-span-2 flex flex-col right">
         <img src='/reserve2.png' alt="Reservation 2" className="" />
         <div className='h-[326px] flex flex-col justify-center items-center'>
           <h1 className={`${vibes.className} text-2xl flex`}>ABOUT &nbsp;&nbsp;US</h1>

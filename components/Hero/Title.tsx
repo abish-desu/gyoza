@@ -4,7 +4,7 @@ const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
 
 const Hero = () => {
   return (
-    <div className="flex justify-center mt-44">
+    <div className="flex justify-center mt-44 head">
       <div className={`${vibes.className} text-7xl`}>MoMo &nbsp;&nbsp;Mero &nbsp;&nbsp;Sathi</div>
     </div>
   );

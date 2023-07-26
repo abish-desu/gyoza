@@ -28,5 +28,58 @@ body {
     font-family: "Roboto", sans-serif;
     }
 }
+@keyframes fade-up{
+  0% {
+    opacity: 0;
+    transform: translateY(65px) scale(1);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+  
+}
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(1);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-35px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
 
+@keyframes fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(35px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+.right{
+  animation: fade-right 1s;
+}
+.left{
+  animation: fade-left 1s;
+}
+.head{
+  animation:fade-down 1s;
+}
+.btn{
+  animation:fade-up 1s;
+}
 
