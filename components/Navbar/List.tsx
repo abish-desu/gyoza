@@ -9,15 +9,16 @@ const List = () => {
     {
       href: "/menu",
       name: "MENU",
+      
+    }, {
+      href: "/about",
+      name: "ABOUT US",
     },
     {
       href: "/contact",
       name: "CONTACT",
     },
-    {
-      href: "/about",
-      name: "ABOUT US",
-    },
+   
   ];
   const pathname = usePathname();
 
