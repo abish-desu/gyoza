@@ -18,12 +18,20 @@ const List = () => {
       href: "/contact",
       name: "CONTACT",
     },
+    {
+      href: "/cart",
+      name: "CART",
+    },
+    {
+      href: "/account",
+      name: "ACCOUNT",
+    },
    
   ];
   const pathname = usePathname();
 
   return (
-    <div className="flex justify-evenly w-80 text-l font-extralight">
+    <div className="flex justify-evenly w-[500px] text-l font-extralight">
       {navLinks.map((link,index) => {
         const isActive = pathname.startsWith(link.href);
 
