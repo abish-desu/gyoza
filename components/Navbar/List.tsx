@@ -4,13 +4,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 
-const List = () => {
+const List = ({ isLoggedIn }) => {
   const navLinks = [
     {
       href: "/menu",
       name: "MENU",
-      
-    }, {
+    },
+    {
       href: "/about",
       name: "ABOUT US",
     },
@@ -18,21 +18,26 @@ const List = () => {
       href: "/contact",
       name: "CONTACT",
     },
-    {
-      href: "/cart",
-      name: "CART",
-    },
+    // Show the "CART" link only if the user is logged in
+    ...(isLoggedIn
+      ? [
+          {
+            href: "/cart",
+            name: "CART",
+          },
+        ]
+      : []),
     {
       href: "/account",
       name: "ACCOUNT",
     },
-   
   ];
+
   const pathname = usePathname();
 
   return (
     <div className="flex justify-evenly w-[500px] text-l font-extralight">
-      {navLinks.map((link,index) => {
+      {navLinks.map((link, index) => {
         const isActive = pathname.startsWith(link.href);
 
         return (
@@ -40,8 +45,9 @@ const List = () => {
             className={isActive ? "text-gray-200" : "text-white"}
             href={link.href}
             key={index}
-          >{link.name}</Link>
-          
+          >
+            {link.name}
+          </Link>
         );
       })}
     </div>
