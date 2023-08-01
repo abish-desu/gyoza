@@ -1,6 +1,6 @@
 import React from 'react';
 import data from '../data';
-import Image from 'next/image';
+
 import { Great_Vibes } from "@next/font/google";
 const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
 

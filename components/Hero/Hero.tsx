@@ -1,10 +1,10 @@
 import React from 'react'
-import Title from './Title'
+import Head from './Head'
 import Button from './Button'
 const Hero = () => {
   return (
     <>
-    <Title/>
+    <Head/>
     <Button/>
     </>
   )
