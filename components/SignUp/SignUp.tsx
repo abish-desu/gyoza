@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignUp = () => {
+const SignUp = ({onSignInLinkClick}:any) => {
   return (
     <>
       <div className="relative flex items-center mt-8">
@@ -109,9 +109,10 @@ const SignUp = () => {
         </button>
 
         <div className="mt-6 text-center ">
-          <div className="text-sm text-blue-500 hover:underline dark:text-blue-400">
-            Already have an account?
-          </div>
+        <button className="text-sm text-blue-500 hover:underline dark:text-blue-400"
+              onClick={() => onSignInLinkClick()}>
+                Already have an account?
+              </button>
         </div>
       </div>
     </>

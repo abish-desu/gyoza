@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Login = () => {
+const Login = ({ onSignUpLinkClick }:any) => {
   return (
     
         <>
@@ -60,9 +60,10 @@ const Login = () => {
             </button>
     
             <div className="mt-6 text-center ">
-              <div className="text-sm text-blue-500 hover:underline dark:text-blue-400">
+              <button className="text-sm text-blue-500 hover:underline dark:text-blue-400"
+              onClick={() => onSignUpLinkClick()}>
                 Don't have an account?
-              </div>
+              </button>
             </div>
           </div>
         </>

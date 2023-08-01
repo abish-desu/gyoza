@@ -10,6 +10,13 @@ const Page = () => {
     setActiveLink(link);
   };
 
+  const handleSignUpLinkClick = () => {
+    setActiveLink('signup');
+  };
+  const handleSignInLinkClick = () => {
+    setActiveLink('signin');
+  };
+
   return (
     <section className="mt-10">
       <div className="flex items-center justify-center">
@@ -34,7 +41,7 @@ const Page = () => {
               sign up
             </button>
           </div>
-          {activeLink === 'signup' ? <SignUp /> : <Login />}
+          {activeLink === 'signup' ? <SignUp onSignInLinkClick={handleSignInLinkClick}/> : <Login onSignUpLinkClick={handleSignUpLinkClick}/>}
         </form>
       </div>
     </section>
