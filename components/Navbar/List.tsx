@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 
 import Link from "next/link";
 import React from "react";
-const isLoggedIn = false;
+
 
 const List = ({ isLoggedIn }:any) => {
   const navLinks = [
