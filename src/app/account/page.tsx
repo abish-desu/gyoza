@@ -1,4 +1,6 @@
 "use client";
+
+import axios from "axios";
 import React, { useState } from "react";
 import SignUp from "../../../components/SignUp/SignUp";
 import Login from "../../../components/Login/Login";
@@ -8,9 +10,21 @@ const Page = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  
 
   const handleSignSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
+    axios.post('http://localhost:3001/account', {name, email, password})
+    .then(res => {
+
+      if (res.data === "Success") {
+        alert("Registration successful!"); // Show an alert for success
+        setActiveLink("signin");
+      } else {
+        alert("Registration failed. Please try again.");
+      }
+
+    }).catch(err => console.log(err)) 
    
   };
   const handleLogSubmit = (e: React.FormEvent) => {
