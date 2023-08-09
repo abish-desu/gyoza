@@ -1,75 +1,90 @@
-import React from 'react'
+import React from "react";
+interface LoginProps {
+  onSignUpLinkClick: () => void;
+  onSubmit: (e: React.FormEvent) => void;
+  onNameChange: (value: string) => void;
 
-const Login = ({ onSignUpLinkClick }:any) => {
-  return (
-    
-        <>
-          <div className="relative flex items-center mt-8">
-            <span className="absolute">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </span>
-    
-            <input
-              type="text"
-              className="block w-full py-3 text-gray-700 border rounded-lg px-11 bg-transparent dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Username"
-            ></input>
-          </div>
-    
-          <div className="relative flex items-center mt-4">
-            <span className="absolute">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
-            </span>
-    
-            <input
-              type="password"
-              className="block w-full px-10 py-3 text-gray-700  border rounded-lg bg-transparent dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Confirm Password"
-            ></input>
-          </div>
-    
-          <div className="mt-6">
-            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide te capitalize transition-colors duration-300 transSignUp bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-              Login
-            </button>
-    
-            <div className="mt-6 text-center ">
-              <button className="text-sm text-blue-500 hover:underline dark:text-blue-400"
-              onClick={() => onSignUpLinkClick()}>
-                Don't have an account?
-              </button>
-            </div>
-          </div>
-        </>
-  
-    
-  )
+  onPasswordChange: (value: string) => void;
 }
+const Login: React.FC<LoginProps> = ({
+  onSignUpLinkClick,
+  onNameChange,
 
-export default Login
+  onPasswordChange,
+  onSubmit,
+}: any) => {
+  return (
+    <form onSubmit={onSubmit}>
+      <div className="relative flex items-center mt-8">
+        <span className="absolute">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
+        </span>
+
+        <input
+          type="text"
+          className="block w-full py-3 text-gray-700 border rounded-lg px-11 bg-transparent dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+          placeholder="Username"
+          onChange={(e) => onNameChange(e.target.value)}
+        ></input>
+      </div>
+
+      <div className="relative flex items-center mt-4">
+        <span className="absolute">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            />
+          </svg>
+        </span>
+
+        <input
+          type="password"
+          className="block w-full px-10 py-3 text-gray-700  border rounded-lg bg-transparent dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+          placeholder="Confirm Password"
+          onChange={(e) => onPasswordChange(e.target.value)}
+        ></input>
+      </div>
+
+      <div className="mt-6">
+        <button
+        type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide te capitalize transition-colors duration-300 transSignUp bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+          Login
+        </button>
+
+        <div className="mt-6 text-center ">
+          <button
+        
+            className="text-sm text-blue-500 hover:underline dark:text-blue-400"
+            onClick={() => onSignUpLinkClick()}
+          >
+            Don't have an account?
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+};
+
+export default Login;
