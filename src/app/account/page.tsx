@@ -7,6 +7,7 @@ import Login from "../../../components/Login/Login";
 
 const Page = () => {
   const [activeLink, setActiveLink] = useState("signin");
+  const [isLoggedIn, setIsLoggedIn ]= useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
