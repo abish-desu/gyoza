@@ -3,9 +3,10 @@ import { usePathname } from "next/navigation";
 
 import Link from "next/link";
 import React from "react";
+import { useAuth } from "../../auth/Authcontext";
 
-
-const List = ({ isLoggedIn }:any) => {
+const List = () => {
+   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const navLinks = [
     {
       href: "/menu",

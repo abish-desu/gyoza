@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "../../components/Navbar/Navbar";
-
+import { AuthProvider } from "../../auth/Authcontext";
 export const metadata: Metadata = {
   title: "Gyoza",
  
@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+          <AuthProvider>
         <Image
           layout="fill"
           className="absoulte opacity-30 -z-10"
@@ -24,6 +25,7 @@ export default function RootLayout({
         />
         <Navbar/>
         {children}
+        </AuthProvider>
       </body>
     </html>
   );
