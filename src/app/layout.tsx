@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: "Gyoza",
  
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -30,4 +29,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 

@@ -9,7 +9,6 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({
   onSignUpLinkClick,
   onNameChange,
-
   onPasswordChange,
   onSubmit,
 }: any) => {
@@ -69,13 +68,14 @@ const Login: React.FC<LoginProps> = ({
 
       <div className="mt-6">
         <button
-        type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide te capitalize transition-colors duration-300 transSignUp bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+          type="submit"
+          className="w-full px-6 py-3 text-sm font-medium tracking-wide te capitalize transition-colors duration-300 transSignUp bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+        >
           Login
         </button>
 
         <div className="mt-6 text-center ">
           <button
-        
             className="text-sm text-blue-500 hover:underline dark:text-blue-400"
             onClick={() => onSignUpLinkClick()}
           >
@@ -88,3 +88,4 @@ const Login: React.FC<LoginProps> = ({
 };
 
 export default Login;
+
