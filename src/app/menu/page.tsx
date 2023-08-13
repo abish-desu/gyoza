@@ -4,8 +4,9 @@ import data from '../data';
 
 import { Great_Vibes } from "@next/font/google";
 const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
-
+import { useAuth } from '../../../auth/Authcontext';
 interface MenuItem {
+
   id: number;
   name: string;
   price_1: number;
@@ -15,7 +16,18 @@ interface MenuItem {
 }
 
 const Menu: React.FC = () => {
+
+
+
+  
+  
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [itemQuantities, setItemQuantities] = useState<{ [itemId: number]: number }>({});
+  const AddToCart = ()=> {
+
+    isLoggedIn ? alert("Yet to update") : alert ("Please Login First")
+
+  }
 
   const incrementQuantity = (itemId: number) => {
     setItemQuantities((prevQuantities) => ({
@@ -67,6 +79,7 @@ const Menu: React.FC = () => {
                   <div className='flex justify-center text-sm font-sans mt-2'>
                     <button
                       className='outline-none border border-white rounded-3xl bg-transparent px-3 py-1'
+                      onClick={()=>{AddToCart()}}
                     >
                       Add to Cart
                     </button>
