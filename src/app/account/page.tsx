@@ -1,44 +1,54 @@
 "use client";
 
 import axios from "axios";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SignUp from "../../../components/SignUp/SignUp";
 import Login from "../../../components/Login/Login";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../../auth/Authcontext";
 const Page = () => {
   const [activeLink, setActiveLink] = useState("signin");
-  
+
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const router = useRouter()
-  
- 
+  const router = useRouter();
+
   const handleSignSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/account', { name, email, password, isLoggedInData: false }) // Set isLoggedInData to false for sign up
-      .then(res => {
+    axios
+      .post("http://localhost:3001/account", {
+        name,
+        email,
+        password,
+        isLoggedInData: false,
+      }) // Set isLoggedInData to false for sign up
+      .then((res) => {
         if (res.data === "Success") {
           alert("Registration successful!"); // Show an alert for success
           setActiveLink("signin");
         } else {
           alert("Registration failed. Please try again.");
         }
-      }).catch(err => console.log(err));
+      })
+      .catch((err) => console.log(err));
   };
-  
+
   const handleLogSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoggingIn(true); // Start the loading state
-    
+
     try {
-      const response = await axios.post('http://localhost:3001/account', { name, password, isLoggedInData: true });
+      const response = await axios.post("http://localhost:3001/account", {
+        name,
+        password,
+        isLoggedInData: true,
+      });
       if (response.data.Status === "Success") {
         setIsLoggedIn(true);
-        return void router.replace('/');
+        return void router.replace("/");
       } else {
         setIsLoggingIn(false); // Reset the loading state
         alert("Login failed. Please check your credentials.");
@@ -47,10 +57,8 @@ const Page = () => {
       setIsLoggingIn(false); // Reset the loading state
       console.log(error);
       alert("An error occurred while logging in.");
-    } 
+    }
   };
-        
-       
 
   const handleNameChange = (value: string) => {
     setName(value);
@@ -75,9 +83,28 @@ const Page = () => {
     setActiveLink("signin");
   };
 
- return (
-  isLoggedIn &&  !isLoggingIn ? (
-    <h1>Hello You are logged</h1>
+  return isLoggedIn && !isLoggingIn ? (
+<>
+  <div className="flex items-center justify-center mt-2">
+    <div className="max-w-md mt-6">
+      <h1 className="text-center text-2xl font-bold text-gray-400">
+        Hey ..... You are Logged In!
+      </h1>
+      <div className="flex justify-center"> 
+        <button
+          className="mt-8 w-[100px] px-6 py-3 text-sm font-medium tracking-wide text capitalize transition-colors duration-300 transSignUp bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+          onClick={() => {
+            setIsLoggedIn(false);
+            alert("Logged Out");
+          }}
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
+</>
+
   ) : (
     <section className="mt-10">
       <div className="flex items-center justify-center">
@@ -122,7 +149,7 @@ const Page = () => {
                   onSubmit={handleSignSubmit}
                 />
               ) : (
-                <Login 
+                <Login
                   onSignUpLinkClick={handleSignUpLinkClick}
                   onNameChange={handleNameChange}
                   onPasswordChange={handlePasswordChange}
@@ -134,9 +161,7 @@ const Page = () => {
         </div>
       </div>
     </section>
-  )
-);
-
+  );
 };
 
 export default Page;
