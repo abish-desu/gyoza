@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Great_Vibes } from "@next/font/google";
 const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
 import { useAuth } from "../../../auth/Authcontext";
+import axios from "axios";
 interface MenuItem {
   id: number;
   name: string;
@@ -21,9 +22,26 @@ const Menu: React.FC = () => {
   const [itemQuantities, setItemQuantities] = useState<{
     [itemId: number]: number;
   }>({});
-  const AddToCart = () => {
+  const addToCart = (itemId: number, quantity: number) => {
     if (isLoggedIn) {
-      alert("Yet to update");
+     
+      axios.post("http://localhost:3001/cart/add-to-cart", {
+        // userId,
+        itemId,
+        quantity,
+      })
+      .then((response) => {
+        if (response.data.status === "Success") {
+          // Successfully added to cart
+          alert("Item added to cart!");
+        } else {
+          alert("Failed to add item to cart.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding to cart:", error);
+        alert("An error occurred while adding item to cart.");
+      });
     } else {
       router.push("/account");
       alert("Please Login First");
@@ -89,7 +107,7 @@ const Menu: React.FC = () => {
                     <button
                       className="outline-none border border-white rounded-3xl bg-transparent px-3 py-1"
                       onClick={() => {
-                        AddToCart();
+                        addToCart(id,quantity);
                       }}
                     >
                       Add to Cart
