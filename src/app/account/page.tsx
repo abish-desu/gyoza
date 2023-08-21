@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import axios from "axios";
 import SignUp from "../../../components/SignUp/SignUp";
@@ -11,7 +11,7 @@ const Page = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { isLoggedIn, setIsLoggedIn,token, setToken, setUserId } = useAuth();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const router = useRouter();
 
@@ -49,7 +49,13 @@ const Page = () => {
       });
 
       if (response.data.Status === "Success") {
+        const newToken = response.data.token;
+        const newUserId = response.data.userId;
+        localStorage.setItem("token", newToken);
+        localStorage.setItem("userId", newUserId);
         setIsLoggedIn(true);
+        setToken(newToken); // Set token in context
+        setUserId(newUserId); // Set userId in context
         router.replace("/");
       } else {
         setIsLoggingIn(false);
@@ -98,7 +104,10 @@ const Page = () => {
               <button
                 className="mt-8 w-[100px] px-6 py-3 text-sm font-medium tracking-wide text capitalize transition-colors duration-300 transSignUp bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 onClick={() => {
+                  localStorage.removeItem("token");
+                  localStorage.removeItem("userId");
                   setIsLoggedIn(false);
+
                   alert("Logged Out");
                 }}
               >

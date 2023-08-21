@@ -5,7 +5,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import { AuthProvider } from "../../auth/Authcontext";
 export const metadata: Metadata = {
   title: "Gyoza",
- 
 };
 export default function RootLayout({
   children,
@@ -15,19 +14,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-          <AuthProvider>
-        <Image
-          layout="fill"
-          className="absoulte opacity-30 -z-10"
-          alt="momo"
-          src="/momo.jpeg"
-        />
-        <Navbar/>
-        {children}
+        <AuthProvider>
+          <Image
+            layout="fill"
+            className="absoulte opacity-30 -z-10"
+            alt="momo"
+            src="/momo.jpeg"
+          />
+          <Navbar />
+          {children}
         </AuthProvider>
       </body>
     </html>
   );
 }
-
-
