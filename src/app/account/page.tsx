@@ -108,7 +108,7 @@ const Page = () => {
                   localStorage.removeItem("userId");
                   setIsLoggedIn(false);
 
-                  alert("Logged Out");
+                  alert("You are Logged out");
                 }}
               >
                 Log Out
