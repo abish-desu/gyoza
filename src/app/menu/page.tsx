@@ -15,38 +15,47 @@ interface MenuItem {
 }
 
 const Menu: React.FC = () => {
-  const { isLoggedIn, setIsLoggedIn ,userId} = useAuth();
+  const { isLoggedIn, setIsLoggedIn, userId } = useAuth();
   const router = useRouter();
 
   const [itemQuantities, setItemQuantities] = useState<{
     [itemId: number]: number;
   }>({});
-  const addToCart = (itemId: number, quantity: number) => {
+  const addToCart =async (itemId: number, quantity: number) => {
+   
     if (isLoggedIn) {
-      axios
-        .post("http://localhost:3001/cart/add-to-cart", {
+      console.log("F1");
+      try {
+        const response = await axios.put("http://localhost:3001/menu", {
           userId,
           itemId,
           quantity,
-        })
-        .then((response) => {
-          if (response.data.status === "Success") {
-            // Successfully added to cart
-            alert("Item added to cart!");
-          } else {
-            alert("Failed to add item to cart.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error adding to cart:", error);
-          alert("An error occurred while adding item to cart.");
         });
+
+        if (response.data.status === "Success") {
+          resetItemQuantity(itemId); 
+          // Successfully added to cart
+
+          alert("Item added to cart!");
+        } else {
+          alert("Failed to add item to cart.");
+        }
+      } catch (error) {
+        console.log("Error adding to cart:", error);
+        alert("An error occurred while adding item to cart.");
+      }
     } else {
       router.push("/account");
       alert("Please Login First");
     }
   };
-
+  const resetItemQuantity = (itemId: number) => {
+    setItemQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: 0,
+    }));
+  };
+  
   const incrementQuantity = (itemId: number) => {
     setItemQuantities((prevQuantities) => ({
       ...prevQuantities,
