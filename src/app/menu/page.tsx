@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import data from "../data";
 import { useRouter } from "next/navigation";
-import { Great_Vibes } from "@next/font/google";
-const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
+
 import { useAuth } from "../../../auth/Authcontext";
 import axios from "axios";
 interface MenuItem {
@@ -16,7 +15,7 @@ interface MenuItem {
 }
 
 const Menu: React.FC = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { isLoggedIn, setIsLoggedIn ,userId} = useAuth();
   const router = useRouter();
 
   const [itemQuantities, setItemQuantities] = useState<{
@@ -24,24 +23,24 @@ const Menu: React.FC = () => {
   }>({});
   const addToCart = (itemId: number, quantity: number) => {
     if (isLoggedIn) {
-     
-      axios.post("http://localhost:3001/cart/add-to-cart", {
-        // userId,
-        itemId,
-        quantity,
-      })
-      .then((response) => {
-        if (response.data.status === "Success") {
-          // Successfully added to cart
-          alert("Item added to cart!");
-        } else {
-          alert("Failed to add item to cart.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error adding to cart:", error);
-        alert("An error occurred while adding item to cart.");
-      });
+      axios
+        .post("http://localhost:3001/cart/add-to-cart", {
+          userId,
+          itemId,
+          quantity,
+        })
+        .then((response) => {
+          if (response.data.status === "Success") {
+            // Successfully added to cart
+            alert("Item added to cart!");
+          } else {
+            alert("Failed to add item to cart.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error adding to cart:", error);
+          alert("An error occurred while adding item to cart.");
+        });
     } else {
       router.push("/account");
       alert("Please Login First");
@@ -64,9 +63,15 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <h1 className={`${vibes.className} text-center my-12 text-3xl head `}>
-        OUR &nbsp;&nbsp;SPECIALITY
-      </h1>
+      <div className="flex items-center justify-center  head my-10">
+        <div className="w-full max-w-md">
+          <div className=" flex items-center">
+            <hr className="flex-grow" />
+            <h1 className={` text-2xl mx-4 `}>OUR &nbsp;SPECIALITY</h1>
+            <hr className="flex-grow" />
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-3 md:grid-cols-3 grid-rows-3 md:grid-rows-2 mx-36 gap-y-20 gap-x-10">
         {data.map((dat: MenuItem) => {
           const { id, name, price_1, price_2, desc, img } = dat;
@@ -80,9 +85,7 @@ const Menu: React.FC = () => {
                   className="w-60 h-44 rounded-xl"
                   alt={name}
                 ></img>
-                <div
-                  className={`${vibes.className} text-center mt-4 w-[160px]`}
-                >
+                <div className={` text-center mt-4 w-[160px]`}>
                   <h3 className="text-lg">{name}</h3>
                   <div className="text-xs mt-3">
                     <h3>CHICKEN : {price_1}</h3>
@@ -107,7 +110,7 @@ const Menu: React.FC = () => {
                     <button
                       className="outline-none border border-white rounded-3xl bg-transparent px-3 py-1"
                       onClick={() => {
-                        addToCart(id,quantity);
+                        addToCart(id, quantity);
                       }}
                     >
                       Add to Cart

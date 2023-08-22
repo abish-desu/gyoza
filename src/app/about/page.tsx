@@ -1,30 +1,29 @@
-import React from 'react';
-import { Great_Vibes } from "@next/font/google";
-const vibes = Great_Vibes({ weight: "400", subsets: ["latin"] });
+import React from "react";
 
 const About = () => {
   return (
     <div className="grid grid-cols-3 gap-0 mx-52 mt-3">
       <div className="col-span-1 left">
-        <div className='h-[326px] flex flex-col justify-center items-center'>
-          <h1 className={`${vibes.className} text-2xl`}>RESERVATIONS</h1>
-          <p className="text-center px-4 pt-5">
-            dita iste quisquam eligendi? Eum nisi iure consequatur veniam perspiciatis, maxime temporibus delectus!
+        <div className="h-[326px] flex flex-col justify-center items-center">
+          <h1 className={` text-xl`}>Reservations</h1>
+          <p className="text-center px-4 pt-4">
+            Secure your spot effortlessly with our convenient online reservation
+            system, offering hassle-free booking for a seamless experience{" "}
           </p>
         </div>
-        <img src='/reserve.png' alt="Reservation 1" className="" />
+        <img src="/reserve.png" alt="Reservation 1" className="" />
       </div>
       <div className="col-span-2 flex flex-col right">
-        <img src='/reserve2.png' alt="Reservation 2" className="" />
-        <div className='h-[326px] flex flex-col justify-center items-center'>
-          <h1 className={`${vibes.className} text-2xl flex`}>ABOUT &nbsp;&nbsp;US</h1>
+        <img src="/reserve2.png" alt="Reservation 2" className="" />
+        <div className="h-[275px] flex flex-col justify-center items-center">
+          <h1 className={` text-xl flex`}>About &nbsp;Us</h1>
           <p className="text-center pt-5 px-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fLorem, ipLorem, ipsum dolor placeat perferendis reprehenderit facilis modi sint expesum dolor placeat perferendis reprehenderit facilis modi sint expeugit vel dolore commodi esse optio voluptates laboriosam ad, aut, odio deserunt libero, labore voluptatum. Enim sit dolor natus perspiciatis pariatur.
+           At Sagar Dai Ko MoMo, we take pride in being a haven for momo enthusiasts. Our culinary passion drives us to craft exquisite momos, infusing flavors that delight and moments that linger
           </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default About;
