@@ -34,7 +34,9 @@ function Page() {
             Item ID: {item.itemId}, Quantity: {item.quantity}, Price: {item.price}
           </li>
         ))}
-      </ul>
+      </ul> 
+      Total: 
+      <button>Checkout</button>
     </div>
   );
 }
