@@ -21,14 +21,14 @@ const Menu: React.FC = () => {
   const [itemQuantities, setItemQuantities] = useState<{
     [itemId: number]: number;
   }>({});
-  const addToCart =async (itemId: number, quantity: number,price_1:number) => {
+  const addToCart =async (itemId: number, quantity: number,price_1:number,name:String) => {
    
     if (isLoggedIn) {
       console.log("F1");
       try {
         const response = await axios.put("http://localhost:3001/menu", {
           userId,
-
+        name,
           itemId,
           quantity,
           price_1
@@ -121,7 +121,7 @@ const Menu: React.FC = () => {
                     <button
                       className="outline-none border border-white rounded-3xl bg-transparent px-3 py-1"
                       onClick={() => {
-                        addToCart(id, quantity,price_1);
+                        addToCart(id, quantity,price_1,name);
                       }}
                     >
                       Add to Cart
