@@ -9,7 +9,7 @@ interface MenuItem {
   id: number;
   name: string;
   price_1: number;
-  price_2: number;
+  
   desc: string;
   img: string;
 }
@@ -21,15 +21,17 @@ const Menu: React.FC = () => {
   const [itemQuantities, setItemQuantities] = useState<{
     [itemId: number]: number;
   }>({});
-  const addToCart =async (itemId: number, quantity: number) => {
+  const addToCart =async (itemId: number, quantity: number,price_1:number) => {
    
     if (isLoggedIn) {
       console.log("F1");
       try {
         const response = await axios.put("http://localhost:3001/menu", {
           userId,
+
           itemId,
           quantity,
+          price_1
         });
 
         if (response.data.status === "Success") {
@@ -83,7 +85,7 @@ const Menu: React.FC = () => {
       </div>
       <div className="grid grid-cols-3 md:grid-cols-3 grid-rows-3 md:grid-rows-2 mx-36 gap-y-20 gap-x-10">
         {data.map((dat: MenuItem) => {
-          const { id, name, price_1, price_2, desc, img } = dat;
+          const { id, name,  price_1, desc, img } = dat;
           const quantity = itemQuantities[id] || 0;
 
           return (
@@ -97,8 +99,8 @@ const Menu: React.FC = () => {
                 <div className={` text-center mt-4 w-[160px]`}>
                   <h3 className="text-lg">{name}</h3>
                   <div className="text-xs mt-3">
-                    <h3>CHICKEN : {price_1}</h3>
-                    <h3 className="mt-1">BUFF : {price_2}</h3>
+                  
+                    <h3 className="mt-1">BUFF &nbsp;: &nbsp;{price_1}</h3>
                   </div>
                   <div className="flex justify-center text-sm font-sans mt-3">
                     <button
@@ -115,11 +117,11 @@ const Menu: React.FC = () => {
                       +
                     </button>
                   </div>
-                  <div className="flex justify-center text-sm font-sans mt-2">
+                  <div className="flex justify-center text-sm font-sans mt-3">
                     <button
                       className="outline-none border border-white rounded-3xl bg-transparent px-3 py-1"
                       onClick={() => {
-                        addToCart(id, quantity);
+                        addToCart(id, quantity,price_1);
                       }}
                     >
                       Add to Cart
